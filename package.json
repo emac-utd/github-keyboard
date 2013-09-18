@@ -1,0 +1,9 @@
+{
+  "name": "emac-sound-experiments",
+  "description": "Testing some synth stuff for Deanprojects",
+  "dependencies": {
+    "baudio": "*",
+    "github": "*",
+    "underscore": "*"
+  }
+}
