@@ -4,6 +4,7 @@
   "dependencies": {
     "baudio": "*",
     "github": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "data-piano": "0.2.x"
   }
 }

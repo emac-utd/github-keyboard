@@ -1,6 +1,7 @@
 var baudio = require('baudio')
 var GitHub = require('github')
 var _ = require('underscore')
+var DataPiano = require('data-piano')
 
 var gh = new GitHub({
   version: "3.0.0"
@@ -19,14 +20,10 @@ gh.repos.getFromUser({user: "substack",
   else {
     var nonForks = _.filter(data, function(repo) { return !repo.fork })
     var sizes = _.map(data, function(repo) { return repo.size })
-    var maxSize = _.max(sizes)
-    var normalizedSizes = _.map(sizes, function(size) { return keyToFreq(Math.round(size/maxSize * 23) + 49) })
-    console.log(normalizedSizes)
+    var piano = new DataPiano({ data: sizes });
     var speed = 10
 
-    var b = baudio(function(t) {
-      return Math.sin(t * normalizedSizes[Math.floor(t * speed) % normalizedSizes.length]) * 0.5
-    })
+    var b = baudio(piano.getSawtoothPlayFunc(speed));
     b.play()
   }
 })
