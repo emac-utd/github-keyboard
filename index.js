@@ -7,10 +7,6 @@ var gh = new GitHub({
   version: "3.0.0"
 });
 
-function keyToFreq(key) {
-  return Math.pow(2, (key-49)/12) * 440
-}
-
 gh.repos.getFromUser({user: "substack",
                       sort: "created",
                       direction: "asc",
